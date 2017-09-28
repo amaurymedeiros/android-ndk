@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">HelloJni</string>
     <string name="btn_1">10s then 5s</string>
-    <string name="btn_2">3s</string>
+    <string name="btn_2">4s</string>
 </resources>

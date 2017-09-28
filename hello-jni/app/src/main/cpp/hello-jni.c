@@ -14,8 +14,16 @@
  * limitations under the License.
  *
  */
-#include <string.h>
 #include <jni.h>
+#include <unistd.h>
+#include <android/log.h>
+
+#define APPNAME "HelloJNI"
+#define LOGD(MSG)  __android_log_print(ANDROID_LOG_DEBUG,APPNAME,MSG)
+#define SLEEP(TIME)             \
+        LOGD("before sleep " #TIME); \
+        sleep(TIME); \
+        LOGD("after sleep " #TIME);
 
 /* This is a trivial JNI example where we use a native method
  * to return a new VM String. See the corresponding Java source
@@ -60,4 +68,25 @@ Java_com_example_hellojni_HelloJni_stringFromJNI( JNIEnv* env,
 #endif
 
     return (*env)->NewStringUTF(env, "Hello from JNI !  Compiled with ABI " ABI ".");
+}
+
+JNIEXPORT void JNICALL
+Java_com_example_hellojni_HelloJni_sleep4( JNIEnv* env,
+                                           jobject thiz )
+{
+    SLEEP(4);
+}
+
+JNIEXPORT void JNICALL
+Java_com_example_hellojni_HelloJni_sleep5( JNIEnv* env,
+                                           jobject thiz )
+{
+    SLEEP(5);
+}
+
+JNIEXPORT void JNICALL
+Java_com_example_hellojni_HelloJni_sleep10( JNIEnv* env,
+                                           jobject thiz )
+{
+    SLEEP(10);
 }

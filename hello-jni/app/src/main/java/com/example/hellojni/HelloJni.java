@@ -57,11 +57,11 @@ public class HelloJni extends AppCompatActivity {
      */
     public native String  stringFromJNI();
 
-    public native String  sleep10();
+    public native void  sleep10();
 
-    public native String  sleep5();
+    public native void  sleep5();
 
-    public native String  sleep4();
+    public native void  sleep4();
 
     /* This is another native method declaration that is *not*
      * implemented by 'hello-jni'. This is simply to show that
