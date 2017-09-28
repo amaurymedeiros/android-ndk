@@ -17,6 +17,8 @@ package com.example.hellojni;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class HelloJni extends AppCompatActivity {
@@ -31,12 +33,35 @@ public class HelloJni extends AppCompatActivity {
         setContentView(R.layout.activity_hello_jni);
         TextView tv = (TextView)findViewById(R.id.hello_textview);
         tv.setText( stringFromJNI() );
+
+        Button bt1 = (Button)findViewById(R.id.button1);
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sleep10();
+                sleep5();
+            }
+        });
+
+        Button bt2 = (Button)findViewById(R.id.button2);
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sleep4();
+            }
+        });
     }
     /* A native method that is implemented by the
      * 'hello-jni' native library, which is packaged
      * with this application.
      */
     public native String  stringFromJNI();
+
+    public native String  sleep10();
+
+    public native String  sleep5();
+
+    public native String  sleep4();
 
     /* This is another native method declaration that is *not*
      * implemented by 'hello-jni'. This is simply to show that
